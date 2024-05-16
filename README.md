@@ -2,7 +2,7 @@
 
 This repository contains three types of files related to our work:
 
-## [Source Code](Themis(source code))
+## [Themis_code](Themis_code)
 
 The source code files consist of the programs of themis, and these files are crucial for running the project and replicating our work.
 
