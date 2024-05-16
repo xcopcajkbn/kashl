@@ -6,11 +6,11 @@ This repository contains three types of files related to our work:
 
 The source code files consist of the programs of themis, and these files are crucial for running the project and replicating our work.
 
-## [Justification]()
+## [Justification](justification.md)
 
 The justification files provide detailed explanations to how we justify the issue we find.
 
-## [Scalibility]()
+## [Scalibility](50top_scalibility.xlsx)
 
 The "50top_scalibility.xlsx" is an Excel spreadsheet that includes scalability data of the top 50 instances in our project or study. 
 
