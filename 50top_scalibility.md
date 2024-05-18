@@ -1,4 +1,4 @@
-| Platform                    | Does its TFM is identical to geth ? | Does its storage is identical to  geth ? | Website                         | Repository                                                   |
+| Platform                    | Is its TFM identical to geth ? | Is its storage identical to  geth ? | Website                         | Repository                                                   |
 | --------------------------- | ----------------------------- | ---------------------------------- | ------------------------------- | ------------------------------------------------------------ |
 | BSC                         | &#10004;                      | &#10004;                           | https://www.bnbchain.org/       | https://github.com/bnb-chain/bsc                             |
 | Ethereum Classic            | &#10004;                      | &#10004;                           | https://ethereumclassic.org/    | https://github.com/etclabscore/core-geth                     |
