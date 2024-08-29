@@ -229,7 +229,7 @@ func (in *EVMInterpreter) Run(contract *Contract, input []byte, readOnly bool) (
 		// execute the operation
 		common.Opcodeinfo.Opcode = byte(op)
 		common.Opcodeinfo.Gasused = cost
-		res, err = operation.execute(&pc, in, callContext)
+		res, err = operation.execute(&pc, in, callContext, cost)
 		if err != nil {
 			break
 		}
