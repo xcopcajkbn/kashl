@@ -27,7 +27,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/themis"
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/console/prompt"
@@ -38,6 +37,7 @@ import (
 	"github.com/ethereum/go-ethereum/internal/ethapi"
 	"github.com/ethereum/go-ethereum/internal/flags"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/ethereum/go-ethereum/maat"
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/node"
 	"go.uber.org/automaxprocs/maxprocs"
@@ -338,7 +338,7 @@ func geth(ctx *cli.Context) error {
 	}
 
 	prepare(ctx)
-	common.GlobalThemisObj = themis.NewSManager()
+	common.GlobalMaatObj = maat.NewSManager()
 	stack, backend := makeFullNode(ctx)
 	defer stack.Close()
 

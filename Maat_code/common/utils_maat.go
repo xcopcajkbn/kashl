@@ -1,12 +1,12 @@
 package common
 
 import (
-	"github.com/ethereum/go-ethereum/themis"
+	"github.com/ethereum/go-ethereum/maat"
 )
 
-var GlobalThemisObj *themis.SManager
+var GlobalMaatObj *maat.SManager
 
-var Opcodeinfo themis.SOpcodecommon
+var Opcodeinfo maat.SOpcodecommon
 
 var Exsit_flag bool
 

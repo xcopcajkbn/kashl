@@ -1,4 +1,4 @@
-package themis
+package maat
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var StorePath = "/root/themistest/" + time.Now().Format("2006-01-02 15:04:05") + "/"
+var StorePath = "/root/maattest/" + time.Now().Format("2006-01-02 15:04:05") + "/"
 
 type SManager struct {
 	Fetcher                   *SFetcher

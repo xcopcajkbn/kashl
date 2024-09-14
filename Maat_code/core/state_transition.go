@@ -27,8 +27,8 @@ import (
 	"github.com/ethereum/go-ethereum/consensus/misc/eip4844"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/core/vm"
+	"github.com/ethereum/go-ethereum/maat"
 	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/themis"
 )
 
 // ExecutionResult includes all output after executing given evm
@@ -411,7 +411,7 @@ func (st *StateTransition) TransitionDb() (*ExecutionResult, error) {
 	)
 	var transfer = false
 	if contractCreation {
-		var op themis.SOpcodecommon
+		var op maat.SOpcodecommon
 		op.Opcode = byte(251)
 		op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 		op.Tx = common.Opcodeinfo.Tx
@@ -425,9 +425,9 @@ func (st *StateTransition) TransitionDb() (*ExecutionResult, error) {
 		common.StorageSAS = false
 		ret, _, st.gasRemaining, vmerr = st.evm.Create(sender, msg.Data, st.gasRemaining, msg.Value)
 		op.Parameter = append(op.Parameter, ret...)
-		common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, common.Exsit_flag, transfer, common.AccountSAS, common.StorageSAS)
+		common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, common.Exsit_flag, transfer, common.AccountSAS, common.StorageSAS)
 	} else {
-		var op themis.SOpcodecommon
+		var op maat.SOpcodecommon
 		op.Opcode = byte(252)
 		op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 		op.Tx = common.Opcodeinfo.Tx
@@ -447,7 +447,7 @@ func (st *StateTransition) TransitionDb() (*ExecutionResult, error) {
 		// Increment the nonce for the next transaction
 		st.state.SetNonce(msg.From, st.state.GetNonce(sender.Address())+1)
 		ret, st.gasRemaining, vmerr = st.evm.Call(sender, st.to(), msg.Data, st.gasRemaining, msg.Value)
-		common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, transfer, common.AccountSAS, common.StorageSAS)
+		common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, transfer, common.AccountSAS, common.StorageSAS)
 	}
 
 	if !rules.IsLondon {

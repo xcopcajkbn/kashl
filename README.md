@@ -1,10 +1,10 @@
-# Themis 
+# Maat
 
 This repository contains three types of files related to our work:
 
-## [Themis_code](Themis_code)
+## [Maat_code](Maat_code)
 
-The source code files consist of the programs of themis, and these files are crucial for running the project and replicating our work.
+The source code files consist of the programs of Maat, and these files are crucial for running the project and replicating our work.
 
 ## [Justification](justification.md)
 

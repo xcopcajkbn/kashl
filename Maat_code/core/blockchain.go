@@ -1832,7 +1832,7 @@ func (bc *BlockChain) insertChain(chain types.Blocks, setHead bool) (int, error)
 			return it.index, err
 		}
 		ptime := time.Since(pstart)
-		common.GlobalThemisObj.Fetcher.FetchOverheadMetric(block.Number().Int64(), ptime, common.MaxMemSize-m.Alloc/1024/1024)
+		common.GlobalMaatObj.Fetcher.FetchOverheadMetric(block.Number().Int64(), ptime, common.MaxMemSize-m.Alloc/1024/1024)
 		vstart := time.Now()
 		if err := bc.validator.ValidateState(block, statedb, receipts, usedGas); err != nil {
 			bc.reportBlock(block, receipts, err)

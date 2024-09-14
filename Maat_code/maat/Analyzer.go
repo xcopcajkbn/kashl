@@ -1,4 +1,4 @@
-package themis
+package maat
 
 import (
 	"fmt"

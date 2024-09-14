@@ -22,8 +22,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/maat"
 	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/themis"
 	"github.com/holiman/uint256"
 )
 
@@ -260,7 +260,7 @@ func opAddress(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gas
 }
 
 func opBalance(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(49)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -278,7 +278,7 @@ func opBalance(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gas
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return nil, nil
 }
 
@@ -359,7 +359,7 @@ func opReturnDataCopy(pc *uint64, interpreter *EVMInterpreter, scope *ScopeConte
 }
 
 func opExtCodeSize(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(59)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -376,7 +376,7 @@ func opExtCodeSize(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext,
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return nil, nil
 }
 
@@ -404,7 +404,7 @@ func opCodeCopy(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, ga
 }
 
 func opExtCodeCopy(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(60)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -432,7 +432,7 @@ func opExtCodeCopy(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext,
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return nil, nil
 }
 
@@ -463,7 +463,7 @@ func opExtCodeCopy(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext,
 //  6. Caller tries to get the code hash for an account which is marked as deleted, this
 //     account should be regarded as a non-existent account and zero should be returned.
 func opExtCodeHash(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(63)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -484,7 +484,7 @@ func opExtCodeHash(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext,
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var stoargesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, stoargesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, stoargesas)
 	return nil, nil
 }
 
@@ -575,7 +575,7 @@ func opMstore8(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gas
 }
 
 func opSload(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(84)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -594,7 +594,7 @@ func opSload(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gasco
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, storagesas, accountsas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, storagesas, accountsas)
 	return nil, nil
 }
 
@@ -602,7 +602,7 @@ func opSstore(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gasc
 	if interpreter.readOnly {
 		return nil, ErrWriteProtection
 	}
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(85)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -620,7 +620,7 @@ func opSstore(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gasc
 	op.ExecutionTime = time.Since(startexe)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, storagesas, accountsas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, storagesas, accountsas)
 	return nil, nil
 }
 
@@ -670,7 +670,7 @@ func opGas(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost
 }
 
 func opCreate(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(240)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -729,12 +729,12 @@ func opCreate(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gasc
 	var whetranfer = common.Transfer
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, exit, whetranfer, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, exit, whetranfer, accountsas, storagesas)
 	return nil, nil
 }
 
 func opCreate2(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(245)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -787,12 +787,12 @@ func opCreate2(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gas
 	whetranfer := common.Transfer
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, exit, whetranfer, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, exit, whetranfer, accountsas, storagesas)
 	return nil, nil
 }
 
 func opCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(241)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -850,12 +850,12 @@ func opCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascos
 	op.Gasused = common.CallGas
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, whetranfer, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, whetranfer, accountsas, storagesas)
 	return ret, nil
 }
 
 func opCallCode(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(242)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -903,12 +903,12 @@ func opCallCode(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, ga
 	var whetranfer = common.Transfer
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, whetranfer, whetranfer, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, whetranfer, whetranfer, accountsas, storagesas)
 	return ret, nil
 }
 
 func opDelegateCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(244)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -947,12 +947,12 @@ func opDelegateCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext
 	op.Gasused = common.CallGas
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return ret, nil
 }
 
 func opStaticCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(250)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -991,7 +991,7 @@ func opStaticCall(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, 
 	op.Gasused = common.CallGas
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return ret, nil
 }
 
@@ -1019,7 +1019,7 @@ func opStop(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascos
 }
 
 func opSelfdestruct(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext, gascost uint64) ([]byte, error) {
-	var op themis.SOpcodecommon
+	var op maat.SOpcodecommon
 	op.Opcode = byte(255)
 	op.CurBlockNum = common.Opcodeinfo.CurBlockNum
 	op.Tx = common.Opcodeinfo.Tx
@@ -1045,7 +1045,7 @@ func opSelfdestruct(pc *uint64, interpreter *EVMInterpreter, scope *ScopeContext
 	op.Parameter = append(op.Parameter, beneficiaryBytes...)
 	var accountsas = common.AccountSAS
 	var storagesas = common.StorageSAS
-	common.GlobalThemisObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
+	common.GlobalMaatObj.Fetcher.FetchOpcodeMetric(op, false, false, accountsas, storagesas)
 	return nil, errStopToken
 }
 
