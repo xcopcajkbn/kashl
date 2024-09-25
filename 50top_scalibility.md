@@ -49,4 +49,4 @@
 | ARZIO Chain                 | &#10004;                      | &#10004;                           |&#10004;                           | https://block.arzio.co/         | https://github.com/arzio-chain/arzio                         |
 | Camino C-Chain              | &#10004;                      | &#10004;                           |&#10004;                           | https://camino.network/         | https://github.com/chain4travel/caminoethvm                  |
 | Double-A Chain              | &#10004;                      | &#10004;                           |&#10004;                           | https://www.acuteangle.com/     | https://github.com/double-a-chain-cloud/double-a-chain       |
-| XT Smart Chain              | &#10004;                      | &#10004;                           | https://www.xsc.pub/            | https://github.com/xt-smartchain/xsc-chain                   |
+| XT Smart Chain              | &#10004;                      | &#10004;                           | &#10004;                           | https://www.xsc.pub/            | https://github.com/xt-smartchain/xsc-chain                   |
